@@ -2,16 +2,15 @@ FROM centos
 MAINTAINER taomee <taomee517@qq.com>
 
 # 创建常用文件夹
-RUN mkdir /data
-
-# 加入启用脚本
-COPY start.sh /data
+RUN mkdir /data /data/service
 
 # 指定工作目录
-WORKDIR /data
+WORKDIR /data/service
 
-# 安装vim, netcat
-RUN yum install -y vim
+# 指定容器卷
+VOLUME ["/data/service"]
+
+# 安装tree
 RUN yum install -y tree
 
 # 配置JDK && JRE
@@ -32,7 +31,7 @@ RUN echo tomcat install completed
 
 EXPOSE 80
 EXPOSE 8080
+EXPOSE 8761
 
-
-#ENTRYPOINT ["/usr/local/jdk1.8.0_231/java","--version"]
+#ENTRYPOINT ["/data/service/ms-eureka/start.sh"]
 ENTRYPOINT ["catalina.sh","run"] && tail -f $CATALINA_HOME/bin/logs/catalina.out
