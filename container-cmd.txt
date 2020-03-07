@@ -1,0 +1,9 @@
+# step 1:
+docker run --name java-dev -p 80:80 -p 8080:8080 -p 8761:8761 -v /data/docker/apps:/data/service -d java-dev:1.1
+
+# step 2:
+docker exec -it java-dev /bin/bash
+
+# step 3:
+cd ms-eureka
+./start.sh
