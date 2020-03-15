@@ -10,20 +10,11 @@
 #
 #
 
-[BaseOS]
-name=CentOS-$releasever- Base
-
-#注释发行方yum源的mirrorlist和baseurl参数，重写阿里云yum源的baseurl参数。
-
+[Stream-BaseOS]
+name=CentOS-Stream - Base
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=BaseOS&infra=$infra
-
-#baseurl=http://mirror.centos.org/$contentdir/$releasever/BaseOS/$basearch/os/
-
-baseurl=https://mirrors.aliyun.com/centos/$releasever/BaseOS/$basearch/os/
-
+baseurl=https://mirrors.aliyun.com/centos/8-stream/BaseOS/x86_64/os/
 gpgcheck=1
-
 enabled=1
-
-gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
 
